@@ -3,6 +3,7 @@ version: '3.8'
 services:
   # MongoDB service
   mongo:
+    container_name: mongodb
     image: mongo:latest
     restart: always
     environment:
@@ -10,16 +11,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: mukarram1361
     ports:
       - "27017:27017"
-    container_name: mongodb
+
   # Backend service
   backend:
+    container_name: backend_container
     image: backend
     restart: always
     environment:
-      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongo:27017
+      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongodb:27017
       - PORT=5000
     ports:
-      - "5000:5000"  
+      - "5000:5000"
     depends_on:
       - mongo
 
