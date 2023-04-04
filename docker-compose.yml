@@ -16,10 +16,11 @@ services:
     image: backend
     restart: always
     environment:
-      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongo:27017/TodoApp
+      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongo:27017
       - PORT=5000
     ports:
       - "5000:5000"
+    container_name: mongodb  
     depends_on:
       - mongo
 
