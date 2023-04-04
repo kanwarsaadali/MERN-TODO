@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # MongoDB service
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: kanwar-sikandar-ali-todo
+      MONGO_INITDB_ROOT_PASSWORD: mukarram1361
+    ports:
+      - "27017:27017"
+
+  # Backend service
+  backend:
+    image: backend
+    restart: always
+    environment:
+      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongo:27017/TodoApp
+      - PORT=5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+
+  # Frontend service
+  frontend:
+    image: frontend
+    restart: always
+    environment:
+      - REACT_APP_API_URL=http://backend:5000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend

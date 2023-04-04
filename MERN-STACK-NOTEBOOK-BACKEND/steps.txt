@@ -1,0 +1,77 @@
+
+                                                                           BACKEND:
+npm i changes start script
+install mongo,express,cors,doteenv
+add server.js file connect app to port and listen it console run cmd with npm start
+database acces : add user on mongodb kanwar-sikandar-ali-todo mukarram1361 give Built-in Role as admin
+network access : allow access from any where
+click database: connect , conect your application copy url and paste it on .env file and edit it
+ 
+
+till here we succed to result 1 server running 2 mongodb conncetd || here i work mainly in server.js and .env file
+
+
+Now we make routes in routes,js file and first test it, with on frontend
+router.get("/",(req,res)=>{
+
+    res.json({message:"Hi there ..."})
+
+})
+
+and use it with app.use on server.js 
+
+
+install nodemon for not redreshing server every time
+
+
+Now ,
+
+create model = schema  = for mongodb = for structre of database
+create controller = call model in controller
+call controller in route
+
+
+change route from => 
+
+router.get("/",(req,res)=>{
+
+    res.json({message:"Hi there ..."})
+
+})
+
+to =>
+ router.get("/", getToDo);
+router.post("/save", saveToDo);
+
+
+add two things in server.js file :
+app.use(express.json());
+app.use(cors());
+
+we arge getting an error text path not defined by putting this it has been solved
+
+ useNewUrlParser: true,
+ useUnifiedTopology: true
+
+
+here we completed my backned side by model,controller,route   ..................................................
+
+
+
+                                                  FRONTEND:
+
+
+
+just i made a todo App aplication as i have made many times
+
+
+                                                   HOSTING AND PUSH ON GITHUB:
+
+
+could not do this taking to much time init
+
+
+
+
+
+
