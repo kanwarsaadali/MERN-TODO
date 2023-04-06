@@ -6,5 +6,5 @@ RUN npm install
 RUN yarn add react-scripts
 COPY . .
 EXPOSE 5000
-CMD ["npm", "start"]
+CMD ["node", "/app/Server.js"]
 ## run start
