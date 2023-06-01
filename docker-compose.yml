@@ -13,25 +13,26 @@ services:
       - "27017:27017"
 
   # Backend service
-  backend:
-    container_name: backend_container
-    image: backend
+  backend-container:
+    container_name: backend-container
+    image: backend:latest
     restart: always
     environment:
-      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongodb:27017
+      - MONGODB_URI=mongodb://kanwar-sikandar-ali-todo:mukarram1361@mongo:27017
       - PORT=5000
     ports:
-      - "5000:5000"
+      - "192.168.23.130:5000:5000"
     depends_on:
       - mongo
 
   # Frontend service
-  frontend:
-    image: frontend
+  frontend-container:
+    container_name: frontend-container
+    image: frontend:latest
     restart: always
     environment:
-      - REACT_APP_API_URL=http://backend:5000
+      - REACT_APP_API_URL=http://192.168.23.130:5000
     ports:
       - "3000:3000"
     depends_on:
-      - backend
+      - backend-container
